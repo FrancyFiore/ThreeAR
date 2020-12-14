@@ -50,10 +50,10 @@ function initialize()
     function onResizeElement()
     {
         arToolkitSource.onResizeElement()
-        arToolkitSource.copySizeElementTo(renderer.domElement)
+        arToolkitSource.copyElementSizeTo(renderer.domElement)
         if ( arToolkitContext.arController !== null )
         {
-            arToolkitSource.copySizeElementTo(arToolkitContext.arController.canvas)
+            arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas)
         }
     }
 
