@@ -87,7 +87,7 @@ function initialize()
 
     const loader = new THREE.GLTFLoader();
     loader.crossOrigin = true;
-    loader.load( '../demo/models/urus/Urus.gltf', gltf => {
+    loader.load( 'models/urus/Urus.gltf', gltf => {
         let model = gltf.scene;
         model.scale.set(0.5, 0.5, 0.5);
         markerRoot.add( model );
