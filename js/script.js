@@ -49,21 +49,21 @@ function initialize()
 
     function onResize()
     {
-        arToolkitSource.onResize()
-        arToolkitSource.copySizeTo(renderer.domElement)
+        arToolkitSource.onResizeElement()
+        arToolkitSource.copySizeElementTo(renderer.domElement)
         if ( arToolkitContext.arController !== null )
         {
-            arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)
+            arToolkitSource.copySizeElementTo(arToolkitContext.arController.canvas)
         }
     }
 
     arToolkitSource.init(function onReady(){
-        onResize()
+        onResizeElement()
     });
 
     // handle resize event
     window.addEventListener('resize', function(){
-        onResize()
+        onResizeElement()
     });
 
 
