@@ -47,7 +47,7 @@ function initialize()
         sourceType : 'webcam',
     });
 
-    function onResize()
+    function onResizeElement()
     {
         arToolkitSource.onResizeElement()
         arToolkitSource.copySizeElementTo(renderer.domElement)
