@@ -35,8 +35,8 @@ function initialize()
     document.body.appendChild( renderer.domElement );
 
     let light = new THREE.PointLight( 0xffffff, 1, 100 );
-	light.position.set( 0, 10, 0 ); // default; light shining from top
-	light.castShadow = true;
+	  light.position.set( 0, 10, 0 ); // default; light shining from top
+	  light.castShadow = true;
     scene.add( light );
 
     // Animation clock
@@ -94,7 +94,7 @@ function initialize()
         model.rotation.x = Math.PI / 2;
 
         markerRoot.add(model);
-        Create an AnimationMixer, and get the list of AnimationClip instances
+      //  Create an AnimationMixer, and get the list of AnimationClip instances
         mixer = new THREE.AnimationMixer( gltf.scene );
         animations = gltf.animations;
 
