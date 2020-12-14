@@ -87,7 +87,7 @@ function initialize()
 
     const loader = new THREE.GLTFLoader();
     loader.crossOrigin = true;
-    Load the car model
+  //  Load the car model
     loader.load( 'models/urus/Urus.gltf', function ( gltf ) {
         let model = gltf.scene;
         model.position.z = -10;
