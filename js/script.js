@@ -17,7 +17,7 @@ function initialize()
 
     let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
     scene.add( ambientLight );
-           
+
     let light = new THREE.PointLight( 0xffffff, 1, 100 );
 	light.position.set( 0, 10, 0 ); // default; light shining from top
 	light.castShadow = true;
@@ -32,15 +32,15 @@ function initialize()
     });
 
     renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-    renderer.setSize( 640, 480 ); // get phone screen size
+    renderer.setSize( 1920, 1080 ); // get phone screen size
     renderer.domElement.style.position = 'absolute'
     renderer.domElement.style.top = '0px'
     renderer.domElement.style.left = '0px'
     document.body.appendChild( renderer.domElement );
-    
+
     // Animation clock
     clock = new THREE.Clock();
-    
+
     // setup arToolkitSource
     arToolkitSource = new THREEx.ArToolkitSource({
         sourceType : 'webcam',
@@ -48,30 +48,30 @@ function initialize()
 
     function onResize()
     {
-        arToolkitSource.onResize()	
-        arToolkitSource.copySizeTo(renderer.domElement)	
+        arToolkitSource.onResize()
+        arToolkitSource.copySizeTo(renderer.domElement)
         if ( arToolkitContext.arController !== null )
         {
-            arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
-        }	
+            arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)
+        }
     }
 
     arToolkitSource.init(function onReady(){
         onResize()
     });
-    
+
     // handle resize event
     window.addEventListener('resize', function(){
         onResize()
     });
-    
-   
+
+
     // create atToolkitContext
     arToolkitContext = new THREEx.ArToolkitContext({
         cameraParametersUrl: 'js/lib/data/camera_para.dat',
         detectionMode: 'mono'
     });
-    
+
     // copy projection matrix to camera when initialization complete
     arToolkitContext.init( function onCompleted(){
         camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
@@ -83,8 +83,8 @@ function initialize()
     let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
         type: 'pattern', patternUrl: "js/lib/data/hiro.patt",
     })
-    
-  
+
+
     const loader = new THREE.GLTFLoader();
     loader.crossOrigin = true;
     loader.load( '../demo/models/urus/Urus.gltf', gltf => {
@@ -134,14 +134,14 @@ function raycast(e, touch = false, controls = null) {
         mouse.x = 2 * (e.clientX / canvasSize.width) - 1;
         mouse.y = 1 - 2 * (e.clientY / canvasSize.height);
     }
-    
+
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects( scene.children, true );
-    
+
     if ( intersects.length > 0 ) {
 
         if(intersects[0].object.parent.parent.name == "FL" || intersects[0].object.parent.parent.name == "FR" ){
-            
+
             // Play wheel animations
             for(let i = 0; i < 4; i++){
 
@@ -193,6 +193,6 @@ function animate()
         // Update the animation mixer, the stats panel, and render this frame
         mixer.update( mixerUpdateDelta );
     }
-     
+
     render();
 }
